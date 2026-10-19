@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Rang Coffee - quán cà phê rang từng mẻ nhỏ tại Biên Hòa, Đồng Nai. Uống tại quán, mua hạt về pha.">
+  <title>Rang Coffee | Cà phê rang từng mẻ nhỏ</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <a href="#home" class="logo" aria-label="Rang Coffee, về đầu trang">
+      <span class="logo-bean" aria-hidden="true"></span>Rang Coffee
+    </a>
+    <nav class="main-nav" aria-label="Điều hướng chính">
+      <ul>
+        <li><a href="#process">Mẻ rang</a></li>
+        <li><a href="#menu">Thực đơn</a></li>
+        <li><a href="#beans">Cà phê hạt</a></li>
+        <li><a href="#contact">Ghé quán</a></li>
+      </ul>
+    </nav>
+    <a href="#contact" class="btn btn-small">Đặt bàn</a>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section id="home" class="section hero">
+      <article class="hero-copy">
+        <h1 class="animate__animated animate__fadeInUp">Cà phê rang từng mẻ nhỏ, ngay trong quán</h1>
+        <p class="hero-text animate__animated animate__fadeInUp animate__delay-1s">
+          Hạt từ Đắk Lắk và Lâm Đồng, rang mỗi sáng ở Biên Hòa. Bạn ngồi xuống là ngửi được mùi hạt vừa ra lò.
+        </p>
+        <p class="hero-actions animate__animated animate__fadeInUp animate__delay-2s">
+          <a href="#menu" class="btn btn-primary">Xem thực đơn</a>
+          <a href="#beans" class="btn btn-ghost">Mua cà phê hạt</a>
+        </p>
+      </article>
+
+      <figure class="roast-card animate__animated animate__fadeIn animate__delay-1s">
+        <svg id="roastChart" viewBox="0 0 480 340" role="img" aria-label="Đường cong nhiệt độ của một mẻ rang, đi qua bốn mốc từ sấy hạt đến nứt thứ hai">
+          <g class="grid-lines">
+            <line x1="30" y1="60" x2="450" y2="60"/>
+            <line x1="30" y1="140" x2="450" y2="140"/>
+            <line x1="30" y1="220" x2="450" y2="220"/>
+            <line x1="30" y1="300" x2="450" y2="300"/>
+          </g>
+          <path id="roastPath" class="roast-line" pathLength="1"
+                d="M30 90 C 55 230, 85 275, 135 262 S 250 190, 320 140 S 410 80, 450 62"/>
+          <g id="roastDots"></g>
+        </svg>
+        <figcaption>
+          <strong>Mẻ rang sáng nay</strong>
+          12 phút, ra lò ở 214°C
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- QUY TRÌNH: một chuỗi thật sự theo thứ tự thời gian -->
+    <section id="process" class="section process">
+      <header class="section-head" data-aos="fade-up">
+        <h2>Một mẻ rang đi qua bốn mốc</h2>
+        <p>Mỗi mốc quyết định vị cuối cùng trong tách của bạn. Chúng tôi dừng đúng lúc, không rang quá tay.</p>
+      </header>
+
+      <ol class="stage-list">
+        <li data-aos="fade-up" data-aos-delay="0">
+          <article class="stage">
+            <span class="bean bean-green" aria-hidden="true"></span>
+            <h3>1. Sấy hạt</h3>
+            <p class="stage-temp">150°C</p>
+            <p>Hạt đổi từ xanh sang vàng rơm, mùi cỏ khô tan dần.</p>
+          </article>
+        </li>
+        <li data-aos="fade-up" data-aos-delay="120">
+          <article class="stage">
+            <span class="bean bean-yellow" aria-hidden="true"></span>
+            <h3>2. Nứt đầu</h3>
+            <p class="stage-temp">196°C</p>
+            <p>Hạt nở ra, kêu lách tách. Vị chua sáng bắt đầu hiện.</p>
+          </article>
+        </li>
+        <li data-aos="fade-up" data-aos-delay="240">
+          <article class="stage">
+            <span class="bean bean-brown" aria-hidden="true"></span>
+            <h3>3. Phát triển</h3>
+            <p class="stage-temp">205°C</p>
+            <p>Đường caramel hóa, vị ngọt và độ dày của cà phê hình thành.</p>
+          </article>
+        </li>
+        <li data-aos="fade-up" data-aos-delay="360">
+          <article class="stage">
+            <span class="bean bean-dark" aria-hidden="true"></span>
+            <h3>4. Nứt thứ hai</h3>
+            <p class="stage-temp">224°C</p>
+            <p>Dầu nổi lên bề mặt hạt, cho vị đắng đậm của bản rang đậm.</p>
+          </article>
+        </li>
+      </ol>
+    </section>
+
+    <!-- THỰC ĐƠN -->
+    <section id="menu" class="section menu">
+      <header class="section-head" data-aos="fade-up">
+        <h2>Thực đơn hôm nay</h2>
+        <p>Pha bằng hạt vừa rang trong tuần. Hết hạt nào, quán đổi hạt đó.</p>
+      </header>
+
+      <article class="menu-feature" data-aos="fade-right">
+        <h3>Cold brew ủ 18 giờ</h3>
+        <p>Hạt Arabica Cầu Đất xay thô, ủ lạnh qua đêm. Vị thanh, chua nhẹ như mận, gần như không đắng.</p>
+        <p class="menu-price">45.000đ</p>
+        <a href="#contact" class="btn btn-primary">Đặt trước ly sáng mai</a>
+      </article>
+
+      <ul class="menu-list">
+        <li data-aos="fade-left" data-aos-delay="0">
+          <article class="menu-item">
+            <h3>Cà phê đen đá</h3>
+            <p>Robusta rang vừa, đậm và ngọt hậu.</p>
+            <p class="menu-price">25.000đ</p>
+          </article>
+        </li>
+        <li data-aos="fade-left" data-aos-delay="100">
+          <article class="menu-item">
+            <h3>Bạc xỉu</h3>
+            <p>Nhiều sữa, ít cà phê, dễ uống buổi chiều.</p>
+            <p class="menu-price">29.000đ</p>
+          </article>
+        </li>
+        <li data-aos="fade-left" data-aos-delay="200">
+          <article class="menu-item">
+            <h3>Cà phê muối</h3>
+            <p>Lớp kem muối mặn nhẹ cân bằng vị đắng.</p>
+            <p class="menu-price">35.000đ</p>
+          </article>
+        </li>
+        <li data-aos="fade-left" data-aos-delay="300">
+          <article class="menu-item">
+            <h3>Pour over</h3>
+            <p>Pha tay từng ly, chọn hạt theo ngày.</p>
+            <p class="menu-price">55.000đ</p>
+          </article>
+        </li>
+      </ul>
+    </section>
+
+    <!-- CÀ PHÊ HẠT -->
+    <section id="beans" class="section beans">
+      <header class="section-head" data-aos="fade-up">
+        <h2>Mua hạt về pha tại nhà</h2>
+        <p>Túi 250g, rang theo đơn trong 48 giờ, có ghi ngày rang trên túi.</p>
+      </header>
+
+      <ul class="bean-grid">
+        <li data-aos="zoom-in-up" data-aos-delay="0">
+          <article class="product">
+            <p class="roast-level" role="img" aria-label="Mức rang: vừa">
+              <i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i>
+            </p>
+            <h3>Arabica Cầu Đất</h3>
+            <p class="notes">Mận chín, hoa nhài, hậu trà đen.</p>
+            <p class="product-foot"><span class="menu-price">145.000đ</span><a href="#contact" class="btn btn-small btn-dark">Đặt mua</a></p>
+          </article>
+        </li>
+        <li data-aos="zoom-in-up" data-aos-delay="120">
+          <article class="product">
+            <p class="roast-level" role="img" aria-label="Mức rang: đậm">
+              <i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i>
+            </p>
+            <h3>Robusta Buôn Ma Thuột</h3>
+            <p class="notes">Cacao đắng, hạt dẻ, body dày.</p>
+            <p class="product-foot"><span class="menu-price">95.000đ</span><a href="#contact" class="btn btn-small btn-dark">Đặt mua</a></p>
+          </article>
+        </li>
+        <li data-aos="zoom-in-up" data-aos-delay="240">
+          <article class="product">
+            <p class="roast-level" role="img" aria-label="Mức rang: vừa đến đậm">
+              <i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i>
+            </p>
+            <h3>Blend của quán</h3>
+            <p class="notes">70% Arabica, 30% Robusta. Ngọt caramel, hậu sô-cô-la.</p>
+            <p class="product-foot"><span class="menu-price">115.000đ</span><a href="#contact" class="btn btn-small btn-dark">Đặt mua</a></p>
+          </article>
+        </li>
+      </ul>
+    </section>
+
+    <!-- LIÊN HỆ -->
+    <section id="contact" class="section contact">
+      <article class="visit" data-aos="fade-right">
+        <h2>Ghé quán hoặc đặt trước</h2>
+        <p>Để lại tên và số điện thoại, quán sẽ gọi lại trong hôm nay để giữ bàn hoặc chuẩn bị túi hạt cho bạn.</p>
+        <dl class="hours">
+          <dt>Thứ hai đến thứ sáu</dt><dd>6:30 - 21:30</dd>
+          <dt>Thứ bảy, chủ nhật</dt><dd>6:30 - 22:30</dd>
+          <dt>Rang hạt</dt><dd>Mỗi sáng 7:00</dd>
+        </dl>
+      </article>
+
+      <form class="contact-form" id="contactForm" data-aos="fade-left" novalidate>
+        <label for="name">Họ và tên</label>
+        <input type="text" id="name" name="name" autocomplete="name" placeholder="Nguyễn Văn A" required>
+
+        <label for="phone">Số điện thoại</label>
+        <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="0900 000 000" required>
+
+        <label for="msg">Bạn cần gì?</label>
+        <textarea id="msg" name="msg" rows="3" placeholder="Ví dụ: đặt bàn 4 người lúc 19:00 thứ sáu"></textarea>
+
+        <button type="submit" class="btn btn-primary">Gửi yêu cầu</button>
+        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <address>
+      <strong>Rang Coffee</strong>
+      Biên Hòa, Đồng Nai<br>
+      <a href="tel:0900000000">0900 000 000</a> &nbsp;|&nbsp; <a href="mailto:hello@rangcoffee.vn">hello@rangcoffee.vn</a>
+    </address>
+    <nav aria-label="Liên kết chân trang">
+      <ul>
+        <li><a href="#process">Mẻ rang</a></li>
+        <li><a href="#menu">Thực đơn</a></li>
+        <li><a href="#beans">Cà phê hạt</a></li>
+        <li><a href="#contact">Ghé quán</a></li>
+      </ul>
+    </nav>
+    <p class="copyright">&copy; 2026 Rang Coffee. Bài giữa kỳ môn Thiết kế Web, Trường ĐH Lạc Hồng.</p>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 700, once: true, offset: 70, easing: 'ease-out-cubic' });
+
+    /* Đặt 4 mốc rang đúng trên đường cong (tính theo độ dài path) */
+    (function () {
+      var path = document.getElementById('roastPath');
+      var group = document.getElementById('roastDots');
+      if (!path || !group) return;
+      var ns = 'http://www.w3.org/2000/svg';
+      var len = path.getTotalLength();
+      var stops = [
+        { at: 0.30, label: 'Sấy hạt',      dy: 30,  anchor: 'middle' },
+        { at: 0.55, label: 'Nứt đầu',      dy: 30,  anchor: 'middle' },
+        { at: 0.78, label: 'Phát triển',   dy: 30,  anchor: 'middle' },
+        { at: 1.00, label: 'Nứt thứ hai',  dy: -16, anchor: 'end'    }
+      ];
+      stops.forEach(function (s, i) {
+        var p = path.getPointAtLength(len * s.at);
+        var c = document.createElementNS(ns, 'circle');
+        c.setAttribute('cx', p.x); c.setAttribute('cy', p.y); c.setAttribute('r', 6);
+        c.setAttribute('class', 'roast-dot');
+        c.style.animationDelay = (1.2 + i * 0.5) + 's';
+        var t = document.createElementNS(ns, 'text');
+        t.setAttribute('x', s.anchor === 'end' ? p.x + 6 : p.x);
+        t.setAttribute('y', p.y + s.dy);
+        t.setAttribute('text-anchor', s.anchor);
+        t.setAttribute('class', 'roast-label');
+        t.style.animationDelay = (1.2 + i * 0.5) + 's';
+        t.textContent = s.label;
+        group.appendChild(c); group.appendChild(t);
+      });
+    })();
+
+    /* Form: báo kết quả ngay trên trang, không dùng alert */
+    (function () {
+      var form = document.getElementById('contactForm');
+      var status = document.getElementById('formStatus');
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var name = form.name.value.trim();
+        var phone = form.phone.value.trim();
+        status.className = 'form-status';
+        if (!name || !phone) {
+          status.textContent = 'Vui lòng nhập họ tên và số điện thoại để quán gọi lại.';
+          status.classList.add('is-error');
+          return;
+        }
+        status.textContent = 'Đã gửi. Quán sẽ gọi lại cho ' + name + ' trong hôm nay.';
+        status.classList.add('is-ok');
+        form.reset();
+      });
+    })();
+  </script>
+</body>
+</html>
