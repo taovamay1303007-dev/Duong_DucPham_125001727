@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="vi" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUXCON - Tập Đoàn Kiến Trúc & Xây Dựng Cao Cấp</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            400: '#FBBF24',
+                            500: '#F59E0B',
+                            600: '#D97706',
+                            glow: '#FFE072'
+                        },
+                        titanium: {
+                            800: '#111827',
+                            900: '#0F172A',
+                            950: '#030712'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #030712;
+            color: #F3F4F6;
+        }
+
+        /* Glassmorphism Styles */
+        .glass-panel {
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(245, 158, 11, 0.15);
+        }
+
+        .glass-card {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(245, 158, 11, 0.5);
+            box-shadow: 0 0 25px rgba(245, 158, 11, 0.15);
+            transform: translateY(-4px);
+        }
+
+        /* Glowing Text & Borders */
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFF0B3 0%, #F59E0B 50%, #B45309 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gold-button {
+            background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(245, 158, 11, 0.3);
+        }
+
+        .gold-button:hover {
+            box-shadow: 0 0 25px rgba(245, 158, 11, 0.6);
+            transform: translateY(-2px);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #030712;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1E293B;
+            border-radius: 4px;
+            border: 1px solid rgba(245, 158, 11, 0.2);
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D97706;
+        }
+
+        /* Animation for Live Stream Pulse */
+        @keyframes pulse-red {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+        .live-pulse {
+            animation: pulse-red 1.5s infinite;
+        }
+    </style>
+</head>
+<body class="bg-titanium-950 text-gray-100 selection:bg-amber-500 selection:text-black">
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-panel border-b border-amber-500/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-11 h-11 rounded-xl gold-button flex items-center justify-center text-black font-extrabold text-xl tracking-wider shadow-lg">
+                    <i class="fa-solid font-black fa-cube"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-2xl font-black tracking-widest text-white uppercase group-hover:text-amber-400 transition-colors">
+                        LUX<span class="gold-gradient-text">CON</span>
+                    </span>
+                    <span class="text-[10px] tracking-widest text-amber-500/80 uppercase font-semibold">Luxury Construction</span>
+                </div>
+            </a>
+
+            <!-- Desktop Menu -->
+            <nav class="hidden md:flex items-center gap-8 font-medium text-sm text-gray-300">
+                <a href="#about" class="hover:text-amber-400 transition-colors">Giới thiệu</a>
+                <a href="#portfolio" class="hover:text-amber-400 transition-colors">Dự án tiêu biểu</a>
+                <a href="#calculator" class="hover:text-amber-400 transition-colors">Dự toán chi phí</a>
+                <a href="#process" class="hover:text-amber-400 transition-colors">Quy trình</a>
+                <a href="#tracker" class="hover:text-amber-400 transition-colors text-amber-400 flex items-center gap-1.5">
+                    <i class="fa-solid fa-satellite-dish text-xs animate-pulse"></i> Tra cứu tiến độ
+                </a>
+            </nav>
+
+            <!-- Action Button -->
+            <div class="hidden sm:flex items-center gap-4">
+                <a href="#acquisition-form" class="gold-button text-black font-bold px-5 py-2.5 rounded-xl text-sm flex items-center gap-2">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    <span>Gửi dự án / Báo giá</span>
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-amber-400 p-2 text-xl focus:outline-none" aria-label="Toggle Navigation">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="hidden md:hidden glass-panel border-t border-amber-500/20 px-6 py-6 space-y-4">
+            <a href="#about" class="block text-gray-300 hover:text-amber-400 font-medium py-2">Giới thiệu</a>
+            <a href="#portfolio" class="block text-gray-300 hover:text-amber-400 font-medium py-2">Dự án tiêu biểu</a>
+            <a href="#calculator" class="block text-gray-300 hover:text-amber-400 font-medium py-2">Dự toán chi phí</a>
+            <a href="#process" class="block text-gray-300 hover:text-amber-400 font-medium py-2">Quy trình làm việc</a>
+            <a href="#tracker" class="block text-amber-400 font-medium py-2">Tra cứu tiến độ công trình</a>
+            <a href="#acquisition-form" class="block w-full text-center gold-button text-black font-bold py-3 rounded-xl">
+                Gửi dự án / Báo giá ngay
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative min-h-screen pt-28 pb-16 flex items-center justify-center overflow-hidden">
+        <!-- Ambient Background Glows -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-amber-500/10 rounded-full blur-[140px] pointer-events-none"></div>
+        <div class="absolute bottom-10 right-10 w-96 h-96 bg-blue-600/10 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <!-- Background Image Grid Overlay -->
+        <div class="absolute inset-0 bg-[linear-gradient(to_right,#1f293715_1px,transparent_1px),linear-gradient(to_bottom,#1f293715_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Hero Left Content -->
+                <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border-amber-500/30 text-amber-400 text-xs sm:text-sm font-semibold uppercase tracking-wider">
+                        <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+                        Tiêu Chuẩn Xây Dựng Thượng Lưu 2026
+                    </div>
+
+                    <h1 class="text-4xl sm:text-6xl xl:text-7xl font-black tracking-tight leading-none">
+                        KIẾN TẠO <br>
+                        <span class="gold-gradient-text">KIỆT TÁC</span> <br>
+                        KHÔNG GIAN SỐNG
+                    </h1>
+
+                    <p class="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed">
+                        LUXCON - Đơn vị tổng thầu thiết kế & thi công trọn gói cao cấp. Chúng tôi biến mọi ý tưởng kiến trúc táo bạo nhất thành công trình hoàn hảo vững bền theo thời gian.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                        <a href="#acquisition-form" class="w-full sm:w-auto gold-button text-black font-bold px-8 py-4 rounded-xl text-base flex items-center justify-center gap-3">
+                            <i class="fa-solid fa-file-signature text-lg"></i>
+                            <span>Gửi Dự Án Của Bạn</span>
+                        </a>
+                        <a href="#calculator" class="w-full sm:w-auto glass-card hover:bg-white/5 text-white font-semibold px-8 py-4 rounded-xl text-base flex items-center justify-center gap-3 border border-white/10">
+                            <i class="fa-solid fa-calculator text-amber-400"></i>
+                            <span>Tính Dự Toán Chi Phí</span>
+                        </a>
+                    </div>
+
+                    <!-- Metrics Badges -->
+                    <div class="pt-8 grid grid-cols-3 gap-4 border-t border-gray-800/80">
+                        <div class="space-y-1">
+                            <h3 class="text-2xl sm:text-4xl font-extrabold gold-gradient-text">500+</h3>
+                            <p class="text-xs sm:text-sm text-gray-400">Dự án hoàn thành</p>
+                        </div>
+                        <div class="space-y-1">
+                            <h3 class="text-2xl sm:text-4xl font-extrabold gold-gradient-text">15+</h3>
+                            <p class="text-xs sm:text-sm text-gray-400">Năm kinh nghiệm</p>
+                        </div>
+                        <div class="space-y-1">
+                            <h3 class="text-2xl sm:text-4xl font-extrabold gold-gradient-text">99.8%</h3>
+                            <p class="text-xs sm:text-sm text-gray-400">Hài lòng từ CDT</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Right Showcase Card -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative glass-card rounded-3xl p-3 sm:p-4 overflow-hidden border-amber-500/20 group">
+                        <div class="relative h-[420px] sm:h-[480px] rounded-2xl overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80" 
+                                 alt="Modern Villa Architecture" 
+                                 class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-titanium-950 via-titanium-950/20 to-transparent"></div>
+                            
+                            <!-- Floating Tag Badge -->
+                            <div class="absolute top-4 right-4 glass-panel px-3 py-1.5 rounded-lg text-xs font-semibold text-amber-400 border-amber-500/30 flex items-center gap-2">
+                                <i class="fa-solid fa-award"></i> Công Trình Tiêu Biểu 2026
+                            </div>
+
+                            <!-- Showcase Info -->
+                            <div class="absolute bottom-6 left-6 right-6 space-y-2">
+                                <div class="text-amber-400 text-xs font-semibold tracking-widest uppercase">Thảo Điền, TP. Hồ Chí Minh</div>
+                                <h3 class="text-xl sm:text-2xl font-bold text-white">The Golden Horizon Villa</h3>
+                                <div class="flex items-center justify-between pt-2 border-t border-white/10 text-xs text-gray-300">
+                                    <span><i class="fa-solid fa-ruler-combined text-amber-400 mr-1"></i> 1,200 m²</span>
+                                    <span><i class="fa-solid fa-coins text-amber-400 mr-1"></i> ~38 Tỷ VNĐ</span>
+                                    <span><i class="fa-solid fa-shield-halved text-amber-400 mr-1"></i> Đã Bàn Giao</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO SECTION -->
+    <section id="portfolio" class="py-24 relative bg-titanium-900/60 border-y border-gray-800/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto space-y-4 mb-12">
+                <h2 class="text-amber-400 text-sm font-extrabold uppercase tracking-widest">Bộ Sưu Tập Công Trình</h2>
+                <h3 class="text-3xl sm:text-5xl font-black text-white">DỰ ÁN TIÊU BIỂU & NỔI BẬT</h3>
+                <p class="text-gray-400 text-sm sm:text-base">Khám phá các kiệt tác kiến trúc được thiết kế và thi công bởi đội ngũ chuyên gia hàng đầu LUXCON.</p>
+            </div>
+
+            <!-- Tab Filters -->
+            <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-4 mb-12" id="portfolio-tabs">
+                <button onclick="filterPortfolio('all')" class="tab-btn active font-semibold px-5 py-2.5 rounded-xl text-xs sm:text-sm transition-all gold-button text-black">
+                    Tất cả dự án
+                </button>
+                <button onclick="filterPortfolio('villa')" class="tab-btn font-semibold px-5 py-2.5 rounded-xl text-xs sm:text-sm transition-all glass-card text-gray-300 hover:text-amber-400 border-white/5">
+                    Biệt thự / Villa
+                </button>
+                <button onclick="filterPortfolio('office')" class="tab-btn font-semibold px-5 py-2.5 rounded-xl text-xs sm:text-sm transition-all glass-card text-gray-300 hover:text-amber-400 border-white/5">
+                    Tòa nhà Văn phòng
+                </button>
+                <button onclick="filterPortfolio('penthouse')" class="tab-btn font-semibold px-5 py-2.5 rounded-xl text-xs sm:text-sm transition-all glass-card text-gray-300 hover:text-amber-400 border-white/5">
+                    Penthouse Luxury
+                </button>
+            </div>
+
+            <!-- Portfolio Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="portfolio-grid">
+                <!-- Project Item 1 -->
+                <div class="portfolio-item villa glass-card rounded-2xl overflow-hidden group cursor-pointer" onclick="openProjectModal(1)">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Villa" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-titanium-950 via-transparent to-transparent"></div>
+                        <span class="absolute top-4 left-4 glass-panel text-amber-400 text-xs font-bold px-3 py-1 rounded-full border-amber-500/30">Biệt thự Villa</span>
+                        <span class="absolute top-4 right-4 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-xs font-bold px-3 py-1 rounded-full">Hoàn thành</span>
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h4 class="text-xl font-bold text-white group-hover:text-amber-400 transition-colors">AURA Royal Villa</h4>
+                        <p class="text-xs text-gray-400 line-clamp-2">Kiến trúc biệt thự sinh thái hiện đại kết hợp không gian mở và hồ bơi vô cực cao cấp.</p>
+                        <div class="pt-3 border-t border-gray-800 flex justify-between text-xs text-gray-300 font-medium">
+                            <span><i class="fa-solid fa-location-dot text-amber-400"></i> Phú Mỹ Hưng, Q.7</span>
+                            <span><i class="fa-solid fa-layer-group text-amber-400"></i> 850 m²</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Item 2 -->
+                <div class="portfolio-item office glass-card rounded-2xl overflow-hidden group cursor-pointer" onclick="openProjectModal(2)">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80" alt="Office Tower" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-titanium-950 via-transparent to-transparent"></div>
+                        <span class="absolute top-4 left-4 glass-panel text-amber-400 text-xs font-bold px-3 py-1 rounded-full border-amber-500/30">Tòa nhà Văn phòng</span>
+                        <span class="absolute top-4 right-4 bg-amber-500/20 text-amber-400 border border-amber-500/30 text-xs font-bold px-3 py-1 rounded-full">Đang thi công</span>
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h4 class="text-xl font-bold text-white group-hover:text-amber-400 transition-colors">Titanium Financial Tower</h4>
+                        <p class="text-xs text-gray-400 line-clamp-2">Tòa tháp tài chính 22 tầng sử dụng mặt kính Low-E tiết kiệm năng lượng đạt chuẩn LEED.</p>
+                        <div class="pt-3 border-t border-gray-800 flex justify-between text-xs text-gray-300 font-medium">
+                            <span><i class="fa-solid fa-location-dot text-amber-400"></i> Quận 1, TP.HCM</span>
+                            <span><i class="fa-solid fa-layer-group text-amber-400"></i> 14,500 m²</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Item 3 -->
+                <div class="portfolio-item penthouse glass-card rounded-2xl overflow-hidden group cursor-pointer" onclick="openProjectModal(3)">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80" alt="Penthouse" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-titanium-950 via-transparent to-transparent"></div>
+                        <span class="absolute top-4 left-4 glass-panel text-amber-400 text-xs font-bold px-3 py-1 rounded-full border-amber-500/30">Penthouse Luxury</span>
+                        <span class="absolute top-4 right-4 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-xs font-bold px-3 py-1 rounded-full">Hoàn thành</span>
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h4 class="text-xl font-bold text-white group-hover:text-amber-400 transition-colors">The Sky Imperial Penthouse</h4>
+                        <p class="text-xs text-gray-400 line-clamp-2">Căn hộ thông tầng đỉnh cao phong cách Indochine pha trộn nét hiện đại sang trọng.</p>
+                        <div class="pt-3 border-t border-gray-800 flex justify-between text-xs text-gray-300 font-medium">
+                            <span><i class="fa-solid fa-location-dot text-amber-400"></i> Ba Đình, Hà Nội</span>
+                            <span><i class="fa-solid fa-layer-group text-amber-400"></i> 520 m²</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECT MODAL DETAIL -->
+    <div id="project-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+        <div class="glass-panel max-w-4xl w-full max-h-[90vh] overflow-y-auto rounded-3xl p-6 sm:p-8 border-amber-500/30 relative">
+            <button onclick="closeProjectModal()" class="absolute top-6 right-6 text-gray-400 hover:text-white text-2xl" aria-label="Đóng cửa sổ modal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="modal-content" class="space-y-6">
+                <!-- Content will be injected dynamically via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- CONSTRUCTION COST CALCULATOR SECTION -->
+    <section id="calculator" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                
+                <!-- Left Header Intro -->
+                <div class="lg:col-span-5 space-y-6">
+                    <span class="text-amber-400 text-sm font-extrabold uppercase tracking-widest">Công Cụ Minh Bạch</span>
+                    <h2 class="text-3xl sm:text-5xl font-black text-white leading-tight">
+                        DỰ TOÁN CHI PHÍ <br>
+                        <span class="gold-gradient-text">XÂY DỰNG CHI TIẾT</span>
+                    </h2>
+                    <p class="text-gray-400 text-sm sm:text-base leading-relaxed">
+                        Tính toán nhanh chóng dự toán ngân sách cho công trình của bạn dựa trên quy mô sàn, số tầng, phong cách thiết kế và gói vật liệu cao cấp.
+                    </p>
+
+                    <div class="glass-card p-5 rounded-2xl border-amber-500/20 space-y-4">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-400 font-bold shrink-0">
+                                <i class="fa-solid fa-shield-cat"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">Cam kết không phát sinh</h4>
+                                <p class="text-xs text-gray-400">Dự toán LUXCON chuẩn xác tới 98% so với thực tế ký kết.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-400 font-bold shrink-0">
+                                <i class="fa-solid fa-file-contract"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">Chính sách bảo hành 10 năm</h4>
+                                <p class="text-xs text-gray-400">Bảo hành kết cấu 10 năm, bảo trì định kỳ 6 tháng/lần.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Calculator Form Panel -->
+                <div class="lg:col-span-7 glass-panel p-6 sm:p-8 rounded-3xl border-amber-500/30 space-y-6">
+                    <h3 class="text-xl font-bold text-white border-b border-gray-800 pb-4 flex items-center gap-3">
+                        <i class="fa-solid fa-sliders text-amber-400"></i>
+                        <span>Nhập Thông Số Công Trình</span>
+                    </h3>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <!-- Land Area -->
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Diện tích đất (m²)</label>
+                            <input type="number" id="calc-area" value="120" min="20" oninput="calculateCost()" 
+                                   class="w-full bg-titanium-950 border border-gray-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-500 transition-colors">
+                        </div>
+
+                        <!-- Floors -->
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Số tầng</label>
+                            <input type="number" id="calc-floors" value="3" min="1" max="20" oninput="calculateCost()" 
+                                   class="w-full bg-titanium-950 border border-gray-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-500 transition-colors">
+                        </div>
+
+                        <!-- Architectural Style -->
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Phong cách kiến trúc</label>
+                            <select id="calc-style" onchange="calculateCost()" class="w-full bg-titanium-950 border border-gray-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-500 transition-colors">
+                                <option value="1">Hiện Đại / Minimalist (Hệ số 1.0)</option>
+                                <option value="1.2">Tân Cổ Điển (Hệ số 1.2)</option>
+                                <option value="1.35">Cổ Điển Hoàng Gia (Hệ số 1.35)</option>
+                                <option value="1.15">Indochine / Đông Dương (Hệ số 1.15)</option>
+                            </select>
+                        </div>
+
+                        <!-- Material Package -->
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Gói vật liệu hoàn thiện</label>
+                            <select id="calc-package" onchange="calculateCost()" class="w-full bg-titanium-950 border border-gray-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-500 transition-colors">
+                                <option value="7500000">Gói Tiêu Chuẩn (7.5 Tr / m²)</option>
+                                <option value="9500000" selected>Gói Cao Cấp (9.5 Tr / m²)</option>
+                                <option value="13000000">Gói Luxury Ultra (13 Tr / m²)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Calculated Output Box -->
+                    <div class="bg-titanium-950/80 rounded-2xl p-6 border border-amber-500/20 space-y-4">
+                        <div class="flex justify-between items-center text-xs text-gray-400 border-b border-gray-800 pb-3">
+                            <span>Tổng diện tích tính tiền (Móng + Sàn + Mái):</span>
+                            <span id="res-total-area" class="font-bold text-amber-400 text-sm">-- m²</span>
+                        </div>
+                        <div class="flex justify-between items-center text-xs text-gray-400 border-b border-gray-800 pb-3">
+                            <span>Ước tính Chi phí Thi công Thô:</span>
+                            <span id="res-raw-cost" class="font-bold text-white text-sm">-- VNĐ</span>
+                        </div>
+                        <div class="flex justify-between items-center pt-2">
+                            <div>
+                                <p class="text-xs text-gray-400 uppercase font-semibold">TỔNG CHI PHÍ DỰ KIẾN</p>
+                                <p class="text-2xl sm:text-3xl font-black gold-gradient-text" id="res-total-cost">-- VNĐ</p>
+                            </div>
+                            <button onclick="requestQuoteWithCalc()" class="gold-button text-black font-bold px-5 py-2.5 rounded-xl text-xs sm:text-sm flex items-center gap-2">
+                                <i class="fa-solid fa-file-pdf"></i>
+                                <span>Nhận Báo Giá Chi Tiết</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- WORK PROCESS SECTION -->
+    <section id="process" class="py-24 bg-titanium-900/40 border-y border-gray-800/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                <h2 class="text-amber-400 text-sm font-extrabold uppercase tracking-widest">Quy Trình Chuẩn Quốc Tế</h2>
+                <h3 class="text-3xl sm:text-5xl font-black text-white">6 BƯỚC TRIỂN KHAI DỰ ÁN</h3>
+                <p class="text-gray-400 text-sm sm:text-base">Quy trình làm việc chặt chẽ, tối ưu thời gian và chất lượng từ khởi công đến bàn giao chìa khóa.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="process-steps">
+                <!-- Step 1 -->
+                <div class="glass-card p-6 rounded-2xl relative space-y-4 border-amber-500/20 hover:border-amber-400 transition-all">
+                    <span class="text-5xl font-black text-gray-800/50 absolute top-4 right-6 pointer-events-none">01</span>
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-comments"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-white">1. Tiếp Nhận & Tư Vấn</h4>
+                    <p class="text-xs text-gray-400 leading-relaxed">Lắng nghe nhu cầu, ngân sách, phân tích pháp lý và hiện trạng lô đất của chủ đầu tư.</p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="glass-card p-6 rounded-2xl relative space-y-4 border-amber-500/20 hover:border-amber-400 transition-all">
+                    <span class="text-5xl font-black text-gray-800/50 absolute top-4 right-6 pointer-events-none">02</span>
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-compass-drafting"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-white">2. Khảo Sát & Ký Hợp Đồng</h4>
+                    <p class="text-xs text-gray-400 leading-relaxed">Đo đạc thực địa bằng thiết bị laser, thống nhất phương án sơ bộ và ký hợp đồng thiết kế.</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="glass-card p-6 rounded-2xl relative space-y-4 border-amber-500/20 hover:border-amber-400 transition-all">
+                    <span class="text-5xl font-black text-gray-800/50 absolute top-4 right-6 pointer-events-none">03</span>
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-cubes"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-white">3. Thiết Kế 3D & Kỹ Thuật</h4>
+                    <p class="text-xs text-gray-400 leading-relaxed">Phối cảnh 3D sống động, hồ sơ thi công kết cấu, MEP chi tiết và cấp phép xây dựng.</p>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="glass-card p-6 rounded-2xl relative space-y-4 border-amber-500/20 hover:border-amber-400 transition-all">
+                    <span class="text-5xl font-black text-gray-800/50 absolute top-4 right-6 pointer-events-none">04</span>
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-hammer"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-white">4. Thi Công Phần Thô</h4>
+                    <p class="text-xs text-gray-400 leading-relaxed">Đào móng, đổ bê tông cốt thép, xây tường gạch theo đúng tiêu chuẩn kỹ thuật nghiêm ngặt.</p>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="glass-card p-6 rounded-2xl relative space-y-4 border-amber-500/20 hover:border-amber-400 transition-all">
+                    <span class="text-5xl font-black text-gray-800/50 absolute top-4 right-6 pointer-events-none">05</span>
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-paint-roller"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-white">5. Hoàn Thiện & Nội Thất</h4>
+                    <p class="text-xs text-gray-400 leading-relaxed">Ốp lát đá nhập khẩu, sơn nước cao cấp, lắp đặt hệ thống SmartHome và nội thất xa xỉ.</p>
+                </div>
+
+                <!-- Step 6 -->
+                <div class="glass-card p-6 rounded-2xl relative space-y-4 border-amber-500/20 hover:border-amber-400 transition-all">
+                    <span class="text-5xl font-black text-gray-800/50 absolute top-4 right-6 pointer-events-none">06</span>
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-key"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-white">6. Bàn Giao & Bảo Hành</h4>
+                    <p class="text-xs text-gray-400 leading-relaxed">Nghiệm thu chi tiết cùng CĐT, bàn giao hồ sơ hoàn công và kích hoạt bảo hành điện tử 10 năm.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CLIENT PROJECT TRACKER PORTAL -->
+    <section id="tracker" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass-panel rounded-3xl p-6 sm:p-10 border-amber-500/30 space-y-8">
+                
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b border-gray-800 pb-6">
+                    <div>
+                        <div class="inline-flex items-center gap-2 text-amber-400 text-xs font-bold uppercase tracking-wider mb-2">
+                            <span class="w-2 h-2 rounded-full bg-red-500 live-pulse"></span> PORTAL GIÁM SÁT REALTIME
+                        </div>
+                        <h2 class="text-2xl sm:text-4xl font-black text-white">TRA CỨU TIẾN ĐỘ CÔNG TRÌNH</h2>
+                    </div>
+
+                    <!-- Search Form Input -->
+                    <div class="flex items-center gap-2 max-w-md w-full">
+                        <input type="text" id="project-code-input" placeholder="Nhập Mã Dự Án (VD: PROJ-2026 hoặc PROJ-LUXURY)" 
+                               class="bg-titanium-950 border border-amber-500/30 rounded-xl px-4 py-3 text-sm text-white w-full focus:outline-none focus:border-amber-400">
+                        <button onclick="trackProject()" class="gold-button text-black font-bold px-6 py-3 rounded-xl text-sm shrink-0">
+                            Tra cứu
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tracker Output Container -->
+                <div id="tracker-output" class="hidden space-y-8">
+                    <!-- Top Status Cards -->
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                        <div class="glass-card p-4 rounded-xl space-y-1">
+                            <span class="text-xs text-gray-400">Tên Dự Án</span>
+                            <p id="track-proj-name" class="font-bold text-white text-base">--</p>
+                        </div>
+                        <div class="glass-card p-4 rounded-xl space-y-1">
+                            <span class="text-xs text-gray-400">Chủ Đầu Tư</span>
+                            <p id="track-client-name" class="font-bold text-white text-base">--</p>
+                        </div>
+                        <div class="glass-card p-4 rounded-xl space-y-1">
+                            <span class="text-xs text-gray-400">Địa Điểm</span>
+                            <p id="track-location" class="font-bold text-white text-base">--</p>
+                        </div>
+                        <div class="glass-card p-4 rounded-xl space-y-1">
+                            <span class="text-xs text-gray-400">Ngày Dự Kiến Hoàn Thành</span>
+                            <p id="track-completion" class="font-bold text-amber-400 text-base">--</p>
+                        </div>
+                    </div>
+
+                    <!-- Overall Progress Bar -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-gray-300 font-semibold">Tiến độ tổng thể công trình</span>
+                            <span id="track-percent-text" class="text-amber-400 font-bold">0%</span>
+                        </div>
+                        <div class="w-full bg-titanium-950 h-4 rounded-full overflow-hidden p-0.5 border border-gray-800">
+                            <div id="track-progress-bar" class="h-full bg-gradient-to-r from-amber-500 to-amber-300 rounded-full transition-all duration-1000" style="width: 0%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Grid: Construction Log & Live Stream Simulation -->
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                        <!-- Left: Live Stream Mockup -->
+                        <div class="lg:col-span-7 space-y-3">
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs font-bold text-gray-300 flex items-center gap-2">
+                                    <i class="fa-solid fa-video text-red-500"></i> WEBCAM TRỰC TIẾP CÔNG TRƯỜNG (CAM 01 - TẦNG MÁI)
+                                </span>
+                                <span class="text-[10px] bg-red-500/20 text-red-400 border border-red-500/30 px-2 py-0.5 rounded font-bold uppercase tracking-wider flex items-center gap-1">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-red-500 live-pulse"></span> LIVE STREAM
+                                </span>
+                            </div>
+                            <div class="relative h-64 sm:h-80 rounded-2xl overflow-hidden border border-amber-500/20">
+                                <img src="https://images.unsplash.com/photo-1541888946425-d0fbb186a5b2?auto=format&fit=crop&w=1200&q=80" alt="Construction Cam" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-black/20"></div>
+                                <div class="absolute top-4 left-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded text-[10px] font-mono text-emerald-400 border border-emerald-500/30">
+                                    REC ● 2026-10-19 14:32:05 FPS: 60
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right: Construction Logs Timeline -->
+                        <div class="lg:col-span-5 space-y-3">
+                            <span class="text-xs font-bold text-gray-300 flex items-center gap-2">
+                                <i class="fa-solid fa-clock-rotate-left text-amber-400"></i> NHẬT KÝ THI CÔNG MỚI NHẤT
+                            </span>
+                            <div class="space-y-3 max-h-80 overflow-y-auto pr-2" id="track-logs">
+                                <!-- Log Items injected dynamically -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Default Placeholder state -->
+                <div id="tracker-placeholder" class="text-center py-12 space-y-3 text-gray-500">
+                    <i class="fa-solid fa-building-circle-check text-5xl text-gray-700"></i>
+                    <p class="text-sm">Vui lòng nhập Mã Dự Án phía trên để kiểm tra tình trạng công trình của bạn.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECT ACQUISITION / CONTACT FORM -->
+    <section id="acquisition-form" class="py-24 bg-titanium-900/60 border-t border-gray-800/60">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass-panel p-8 sm:p-12 rounded-3xl border-amber-500/30 space-y-8">
+                
+                <div class="text-center space-y-3">
+                    <span class="text-amber-400 text-xs font-extrabold uppercase tracking-widest">Khởi Đầu Kiệt Tác Của Bạn</span>
+                    <h2 class="text-3xl sm:text-4xl font-black text-white">GỬI YÊU CẦU DỰ ÁN / TƯ VẤN</h2>
+                    <p class="text-gray-400 text-xs sm:text-sm">Điền thông tin dự án của bạn dưới đây. Đội ngũ Kiến trúc sư trưởng của LUXCON sẽ liên hệ trong 2 giờ làm việc.</p>
+                </div>
+
+                <form id="projectForm" onsubmit="submitProjectForm(event)" class="space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Họ và tên chủ đầu tư *</label>
+                            <input type="text" required placeholder="Nguyễn Văn A" class="w-full bg-titanium-950 border border-gray-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Số điện thoại / Zalo *</label>
+                            <input type="tel" required placeholder="0901 234 567" class="w-full bg-titanium-950 border border-gray-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Loại hình công trình</label>
+                            <select class="w-full bg-titanium-950 border border-gray-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500">
+                                <option>Biệt thự / Dinh thự Villa</option>
+                                <option>Tòa nhà Văn phòng / Thương mại</option>
+                                <option>Penthouse / Căn hộ Cao cấp</option>
+                                <option>Khách sạn / Resort</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Dự kiến ngân sách (VNĐ)</label>
+                            <select class="w-full bg-titanium-950 border border-gray-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500">
+                                <option>Từ 3 - 5 Tỷ</option>
+                                <option>Từ 5 - 10 Tỷ</option>
+                                <option>Từ 10 - 30 Tỷ</option>
+                                <option>Trêu 30 Tỷ (Dự án đặc biệt)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- File Upload Input (Mock) -->
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Tải lên Bản vẽ / Sơ đồ mặt bằng (Nếu có)</label>
+                        <div class="border-2 border-dashed border-gray-800 hover:border-amber-500/50 rounded-2xl p-6 text-center cursor-pointer transition-colors bg-titanium-950/50">
+                            <i class="fa-solid fa-cloud-arrow-up text-3xl text-amber-400 mb-2"></i>
+                            <p class="text-xs text-gray-300">Kéo thả file bản vẽ vào đây hoặc <span class="text-amber-400 font-bold">chọn file từ máy</span></p>
+                            <p class="text-[10px] text-gray-500 mt-1">Chấp nhận định dạng PDF, DWG, PNG, JPG (Tối đa 25MB)</p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Mô tả yêu cầu chi tiết</label>
+                        <textarea rows="4" placeholder="Ví dụ: Cần xây dựng biệt thự 3 tầng phong cách Hiện Đại, diện tích sàn 150m2, có bể bơi ngoài trời..." class="w-full bg-titanium-950 border border-gray-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full gold-button text-black font-extrabold py-4 rounded-xl text-base tracking-wider uppercase flex items-center justify-center gap-3">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        <span>Xác Nhận Đăng Ký & Gửi Yêu Cầu</span>
+                    </button>
+                </form>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-titanium-950 border-t border-gray-800 py-12 text-gray-400 text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <div class="space-y-4">
+                <a href="#" class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-lg gold-button flex items-center justify-center text-black font-extrabold text-sm">
+                        <i class="fa-solid fa-cube"></i>
+                    </div>
+                    <span class="text-lg font-black text-white">LUX<span class="gold-gradient-text">CON</span></span>
+                </a>
+                <p class="leading-relaxed">Tập đoàn tổng thầu Kiến trúc - Xây dựng cao cấp hàng đầu Việt Nam.</p>
+            </div>
+            
+            <div class="space-y-3">
+                <h4 class="text-white font-bold text-sm uppercase tracking-wider">Trụ Sở Chính</h4>
+                <p><i class="fa-solid fa-location-dot text-amber-400 mr-2"></i> Tòa nhà LUXCON Tower, Số 88 Nguyễn Cơ Thạch, Nam Từ Liêm, Hà Nội</p>
+                <p><i class="fa-solid fa-phone text-amber-400 mr-2"></i> Hotline: 1900 888 999 - 0988 888 888</p>
+            </div>
+
+            <div class="space-y-3">
+                <h4 class="text-white font-bold text-sm uppercase tracking-wider">Văn Phòng TP.HCM</h4>
+                <p><i class="fa-solid fa-location-dot text-amber-400 mr-2"></i> Số 12 Khu Đô Thị Sala, TP. Thủ Đức, TP. Hồ Chí Minh</p>
+                <p><i class="fa-solid fa-envelope text-amber-400 mr-2"></i> Email: contact@luxcon.com.vn</p>
+            </div>
+
+            <div class="space-y-3">
+                <h4 class="text-white font-bold text-sm uppercase tracking-wider">Mạng Xã Hội</h4>
+                <div class="flex gap-3">
+                    <a href="#" class="w-9 h-9 rounded-xl glass-card flex items-center justify-center text-amber-400 hover:bg-amber-500 hover:text-black transition-colors" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="w-9 h-9 rounded-xl glass-card flex items-center justify-center text-amber-400 hover:bg-amber-500 hover:text-black transition-colors" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" class="w-9 h-9 rounded-xl glass-card flex items-center justify-center text-amber-400 hover:bg-amber-500 hover:text-black transition-colors" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-gray-900 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-gray-500">
+            <p>© 2026 LUXCON Construction Group. All rights reserved.</p>
+            <p>Thiết kế & Phát triển bởi Chuyên Gia Web Xây Dựng</p>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE AI CHATBOT WIDGET -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <!-- Chat Trigger Button -->
+        <button onclick="toggleChatbot()" class="gold-button w-14 h-14 rounded-full text-black flex items-center justify-center text-2xl shadow-2xl relative group" aria-label="Mở Trợ lý AI Tư vấn">
+            <i class="fa-solid fa-robot"></i>
+            <span class="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full border-2 border-black"></span>
+        </button>
+
+        <!-- Chat Window Panel -->
+        <div id="chatbot-panel" class="hidden absolute bottom-16 right-0 w-80 sm:w-96 glass-panel rounded-3xl border-amber-500/30 overflow-hidden shadow-2xl flex flex-col h-[460px]">
+            <!-- Header -->
+            <div class="p-4 bg-titanium-900 border-b border-gray-800 flex justify-between items-center">
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-xl gold-button flex items-center justify-center text-black font-bold">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-xs font-bold text-white">Trợ Lý AI KTS LUXCON</h4>
+                        <span class="text-[10px] text-emerald-400 flex items-center gap-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Trực tuyến 24/7
+                        </span>
+                    </div>
+                </div>
+                <button onclick="toggleChatbot()" class="text-gray-400 hover:text-white" aria-label="Đóng Chatbot">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Messages Area -->
+            <div id="chat-messages" class="flex-1 p-4 overflow-y-auto space-y-3 text-xs">
+                <div class="bg-titanium-950 p-3 rounded-2xl rounded-tl-none border border-gray-800 text-gray-300 max-w-[85%]">
+                    Xin chào! Tôi là Trợ lý AI của LUXCON. Bạn cần tư vấn về báo giá, giấy phép xây dựng hay xem tiến độ công trình?
+                </div>
+            </div>
+
+            <!-- Input Area -->
+            <div class="p-3 border-t border-gray-800 flex gap-2">
+                <input type="text" id="chat-input" placeholder="Hỏi AI tư vấn..." onkeypress="handleChatKeyPress(event)"
+                       class="flex-1 bg-titanium-950 border border-gray-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-400">
+                <button onclick="sendChatMessage()" class="gold-button text-black px-4 py-2 rounded-xl text-xs font-bold">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // --- 1. Mobile Menu Toggle ---
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on clicking any link inside
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // --- 2. Portfolio Filter Logic ---
+        function filterPortfolio(category) {
+            const items = document.querySelectorAll('.portfolio-item');
+            const btns = document.querySelectorAll('#portfolio-tabs .tab-btn');
+
+            btns.forEach(btn => {
+                btn.classList.remove('gold-button', 'text-black');
+                btn.classList.add('glass-card', 'text-gray-300');
+            });
+
+            event.target.classList.remove('glass-card', 'text-gray-300');
+            event.target.classList.add('gold-button', 'text-black');
+
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // --- 3. Project Modal Logic ---
+        const projectsData = {
+            1: {
+                title: "AURA Royal Villa",
+                category: "Biệt thự Villa Cao Cấp",
+                location: "Phú Mỹ Hưng, Quận 7, TP.HCM",
+                scale: "850 m² (3 Tầng + 1 Hầm)",
+                budget: "28 Tỷ VNĐ",
+                duration: "10 Tháng thi công",
+                img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80",
+                desc: "Dự án biệt thự nghỉ dưỡng cao cấp kết hợp hồ bơi tràn bờ. Toàn bộ mặt tiền sử dụng hệ kính hộp khung nhôm Reynaers Đức cách âm cách nhiệt tuyệt đối."
+            },
+            2: {
+                title: "Titanium Financial Tower",
+                category: "Tòa Nhà Văn Phòng",
+                location: "Đường Lê Duẩn, Quận 1, TP.HCM",
+                scale: "14,500 m² (22 Tầng)",
+                budget: "180 Tỷ VNĐ",
+                duration: "18 Tháng thi công",
+                img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80",
+                desc: "Tòa nhà văn phòng đạt chứng chỉ xanh LEED Gold. Trang bị hệ thống quản lý tòa nhà thông minh BMS và thang máy tốc độ cao 6m/s."
+            },
+            3: {
+                title: "The Sky Imperial Penthouse",
+                category: "Penthouse Luxury",
+                location: "Quận Ba Đình, Hà Nội",
+                scale: "520 m² (Thông tầng 44-45)",
+                budget: "18 Tỷ VNĐ",
+                duration: "5 Tháng thi công",
+                img: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80",
+                desc: "Siêu căn hộ Penthouse tầm nhìn toàn cảnh Hồ Tây. Nội thất độc bản dát vàng 24K nhẹ cùng vật liệu đá Marble Calacatta đắt giá từ Ý."
+            }
+        };
+
+        function openProjectModal(id) {
+            const data = projectsData[id];
+            const modalContent = document.getElementById('modal-content');
+
+            modalContent.innerHTML = `
+                <div class="relative h-72 sm:h-96 rounded-2xl overflow-hidden border border-amber-500/20">
+                    <img src="${data.img}" class="w-full h-full object-cover">
+                    <div class="absolute top-4 left-4 glass-panel px-3 py-1 rounded-full text-xs font-bold text-amber-400">${data.category}</div>
+                </div>
+                <div class="space-y-4">
+                    <h3 class="text-2xl sm:text-3xl font-black text-white">${data.title}</h3>
+                    <p class="text-xs sm:text-sm text-gray-300 leading-relaxed">${data.desc}</p>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 py-4 border-y border-gray-800 text-xs">
+                        <div>
+                            <span class="text-gray-500 block">Địa điểm</span>
+                            <span class="font-bold text-white">${data.location}</span>
+                        </div>
+                        <div>
+                            <span class="text-gray-500 block">Quy mô</span>
+                            <span class="font-bold text-white">${data.scale}</span>
+                        </div>
+                        <div>
+                            <span class="text-gray-500 block">Ngân sách</span>
+                            <span class="font-bold text-amber-400">${data.budget}</span>
+                        </div>
+                        <div>
+                            <span class="text-gray-500 block">Thời gian</span>
+                            <span class="font-bold text-white">${data.duration}</span>
+                        </div>
+                    </div>
+                    <button onclick="closeProjectModal(); location.href='#acquisition-form'" class="w-full gold-button text-black font-bold py-3 rounded-xl text-sm uppercase tracking-wider">
+                        Tư Vấn Thiết Kế Mẫu Dự Án Tương Tự
+                    </button>
+                </div>
+            `;
+
+            document.getElementById('project-modal').classList.remove('hidden');
+        }
+
+        function closeProjectModal() {
+            document.getElementById('project-modal').classList.add('hidden');
+        }
+
+        // --- 4. Cost Calculator Logic ---
+        function calculateCost() {
+            const area = parseFloat(document.getElementById('calc-area').value) || 0;
+            const floors = parseInt(document.getElementById('calc-floors').value) || 1;
+            const styleCoeff = parseFloat(document.getElementById('calc-style').value);
+            const packageUnitPrice = parseFloat(document.getElementById('calc-package').value);
+
+            // Hệ số xây dựng: Móng (50%), Sàn (100% * số tầng), Mái (50%)
+            const totalBuildArea = area * 0.5 + (area * floors) + (area * 0.5);
+            
+            // Đơn giá thô cơ bản: 3.8 triệu / m2
+            const rawCost = totalBuildArea * 3800000 * styleCoeff;
+            const totalCost = totalBuildArea * packageUnitPrice * styleCoeff;
+
+            document.getElementById('res-total-area').innerText = totalBuildArea.toLocaleString('vi-VN') + ' m²';
+            document.getElementById('res-raw-cost').innerText = Math.round(rawCost).toLocaleString('vi-VN') + ' VNĐ';
+            document.getElementById('res-total-cost').innerText = Math.round(totalCost).toLocaleString('vi-VN') + ' VNĐ';
+        }
+
+        function requestQuoteWithCalc() {
+            const totalCostText = document.getElementById('res-total-cost').innerText;
+            const target = document.getElementById('acquisition-form');
+            target.scrollIntoView({ behavior: 'smooth' });
+            alert(`Dự toán của bạn là ${totalCostText}. Hãy điền thông tin để LUXCON gửi bảng khối lượng chi tiết!`);
+        }
+
+        // Initialize Calculator
+        calculateCost();
+
+        // --- 5. Project Tracker Logic ---
+        const projectsTrackerDB = {
+            'PROJ-2026': {
+                name: "Villa Ocean Park Luxury",
+                client: "Chủ Đầu Tư: Mr. Hoàng Nam",
+                location: "Gia Lâm, Hà Nội",
+                completion: "15/12/2026",
+                progress: 68,
+                logs: [
+                    { date: "19/10/2026", text: "Đang tiến hành đổ bê tông sàn tầng 3. Kiểm định cốt thép đạt chuẩn 100%." },
+                    { date: "12/10/2026", text: "Hoàn thiện tháo giàn giáo tầng 2, bắt đầu xây tường gạch bao che." },
+                    { date: "01/10/2026", text: "Nghiệm thu phần kết cấu móng băng bê tông cốt thép mác 300." }
+                ]
+            },
+            'PROJ-LUXURY': {
+                name: "Dinh Thự The Empire",
+                client: "Chủ Đầu Tư: Tập Đoàn Alpha",
+                location: "Đà Nẵng",
+                completion: "30/08/2027",
+                progress: 35,
+                logs: [
+                    { date: "18/10/2026", text: "Hoàn thành thi công cọc khoan nhồi D1000 âm sâu 42m." },
+                    { date: "05/10/2026", text: "Khởi công động thổ, định vị ranh giới khu đất chính xác." }
+                ]
+            }
+        };
+
+        function trackProject() {
+            const codeInput = document.getElementById('project-code-input').value.trim().toUpperCase();
+            const placeholder = document.getElementById('tracker-placeholder');
+            const output = document.getElementById('tracker-output');
+
+            if (projectsTrackerDB[codeInput]) {
+                const data = projectsTrackerDB[codeInput];
+                
+                document.getElementById('track-proj-name').innerText = data.name;
+                document.getElementById('track-client-name').innerText = data.client;
+                document.getElementById('track-location').innerText = data.location;
+                document.getElementById('track-completion').innerText = data.completion;
+                
+                document.getElementById('track-percent-text').innerText = data.progress + '%';
+                document.getElementById('track-progress-bar').style.width = data.progress + '%';
+
+                const logsContainer = document.getElementById('track-logs');
+                logsContainer.innerHTML = '';
+                data.logs.forEach(log => {
+                    logsContainer.innerHTML += `
+                        <div class="glass-card p-3 rounded-xl border-amber-500/10 space-y-1">
+                            <span class="text-[10px] text-amber-400 font-mono font-bold">${log.date}</span>
+                            <p class="text-xs text-gray-300">${log.text}</p>
+                        </div>
+                    `;
+                });
+
+                placeholder.classList.add('hidden');
+                output.classList.remove('hidden');
+            } else {
+                alert('Mã Dự Án không tồn tại! Vui lòng thử lại với mã: PROJ-2026 hoặc PROJ-LUXURY');
+            }
+        }
+
+        // --- 6. Form Submission Handle ---
+        function submitProjectForm(e) {
+            e.preventDefault();
+            alert('Cảm ơn Quý khách! LUXCON đã tiếp nhận thông tin dự án. Trưởng phòng Kỹ thuật sẽ liên hệ trong ít phút.');
+            document.getElementById('projectForm').reset();
+        }
+
+        // --- 7. Chatbot Interactive Logic ---
+        function toggleChatbot() {
+            const panel = document.getElementById('chatbot-panel');
+            panel.classList.toggle('hidden');
+        }
+
+        function sendChatMessage() {
+            const input = document.getElementById('chat-input');
+            const msg = input.value.trim();
+            if (!msg) return;
+
+            const container = document.getElementById('chat-messages');
+
+            // Add User Message
+            container.innerHTML += `
+                <div class="bg-amber-500/20 text-amber-300 p-3 rounded-2xl rounded-tr-none border border-amber-500/30 max-w-[85%] ml-auto text-right">
+                    ${msg}
+                </div>
+            `;
+
+            input.value = '';
+            container.scrollTop = container.scrollHeight;
+
+            // Simulated AI Response
+            setTimeout(() => {
+                let reply = "Cảm ơn bạn! Để có báo giá chính xác nhất, bạn có thể nhập thông số ở mục 'Dự toán chi phí' hoặc gửi form đăng ký trực tiếp nhé!";
+                const lower = msg.toLowerCase();
+                
+                if (lower.includes('giá') || lower.includes('chi phí')) {
+                    reply = "Đơn giá thi công trọn gói của LUXCON dao động từ 7.5 Tr/m² (Gói Tiêu Chuẩn) đến 13 Tr/m² (Gói Luxury). Bạn muốn tham khảo gói nào?";
+                } else if (lower.includes('pháp lý') || lower.includes('giấy phép')) {
+                    reply = "LUXCON hỗ trợ miễn phí 100% thủ tục xin Giấy Phép Xây Dựng khi ký hợp đồng thi công trọn gói ạ!";
+                } else if (lower.includes('tiến độ')) {
+                    reply = "Bạn có thể tra cứu tiến độ công trình bằng cách nhập Mã Dự Án (Ví dụ: PROJ-2026) ở mục Tra Cứu Tiến Độ phía trên!";
+                }
+
+                container.innerHTML += `
+                    <div class="bg-titanium-950 p-3 rounded-2xl rounded-tl-none border border-gray-800 text-gray-300 max-w-[85%]">
+                        ${reply}
+                    </div>
+                `;
+                container.scrollTop = container.scrollHeight;
+            }, 800);
+        }
+
+        function handleChatKeyPress(e) {
+            if (e.key === 'Enter') {
+                sendChatMessage();
+            }
+        }
+    </script>
+</body>
+</html>
